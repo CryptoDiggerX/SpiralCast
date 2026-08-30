@@ -1,0 +1,13 @@
+{
+  "miniapp": {
+    "version": "1",
+    "name": "Spiral Cast",
+    "iconUrl": "https://spiralcast.vercel.app/icon.png",
+    "homeUrl": "https://spiralcast.vercel.app",
+    "imageUrl": "https://spiralcast.vercel.app/og-image.png",
+    "buttonTitle": "Register for $SCT",
+    "splashImageUrl": "https://spiralcast.vercel.app/splash.png",
+    "splashBackgroundColor": "#F8F3E8",
+    "webhookUrl": "https://spiralcast.vercel.app/api/webhook"
+  }
+}
