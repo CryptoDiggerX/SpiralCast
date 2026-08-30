@@ -29,14 +29,14 @@ export const metadata: Metadata = {
   other: {
     "fc:miniapp": JSON.stringify({
       version: "1",
-      imageUrl: `${APP_URL}/og-image.png`,
+      imageUrl: APP_URL + "/og-image.png",
       button: {
         title: "Register for $SCT",
         action: {
           type: "launch_miniapp",
           url: APP_URL,
           name: "Spiral Cast",
-          splashImageUrl: `${APP_URL}/splash.png`,
+          splashImageUrl: APP_URL + "/splash.png",
           splashBackgroundColor: "#F8F3E8",
         },
       },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}>
+    <html lang="en" className={fraunces.variable + " " + inter.variable + " " + mono.variable}>
       <body className="font-body noise-bg min-h-screen">{children}</body>
     </html>
   );
