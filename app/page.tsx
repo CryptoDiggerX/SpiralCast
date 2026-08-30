@@ -312,18 +312,8 @@ export default function Page() {
             )}
 
             {alreadyRegistered ? (
-              <div className="text-center py-2">
-                <p className="font-display italic text-lg text-gold-600">✓ Registered</p>
-                {txHash && (
-                  <a
-                    href={`https://basescan.org/tx/${txHash}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-mono text-[11px] text-ink/50 underline break-all"
-                  >
-                    {txHash.slice(0, 10)}…{txHash.slice(-8)}
-                  </a>
-                )}
+              <div className="text-center py-3">
+                <p className="font-display italic text-xl text-gold-600">You're on the list</p>
               </div>
             ) : (
               <button
