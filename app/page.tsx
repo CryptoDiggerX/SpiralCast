@@ -107,13 +107,22 @@ export default function Page() {
     setStep("connecting");
     setErrorMsg(null);
     try {
-      let provider: any;
+      let provider: any = null;
+
       if (sdkRef?.wallet?.getEthereumProvider) {
-        provider = await sdkRef.wallet.getEthereumProvider();
-      } else if (typeof window !== "undefined" && (window as any).ethereum) {
+        try {
+          provider = await sdkRef.wallet.getEthereumProvider();
+        } catch {
+          provider = null;
+        }
+      }
+
+      if (!provider && typeof window !== "undefined" && (window as any).ethereum) {
         provider = (window as any).ethereum;
-      } else {
-        throw new Error("No wallet provider available. Open this inside Farcaster.");
+      }
+
+      if (!provider) {
+        throw new Error("No wallet found. Open this in Farcaster or a wallet browser (e.g. Coinbase Wallet, MetaMask).");
       }
 
       const accounts: string[] = await provider.request({ method: "eth_requestAccounts" });
@@ -138,7 +147,7 @@ export default function Page() {
       }
     } catch (e: any) {
       console.error(e);
-      setErrorMsg(e?.message || "Wallet connection failed");
+      setErrorMsg(typeof e?.message === "string" ? e.message : "Wallet connection failed");
       setStep("ready");
     }
   };
@@ -329,7 +338,6 @@ export default function Page() {
         )}
       </div>
 
-      {/* Claim banner */}
       <div className="w-full max-w-md mt-6 bg-ink rounded-2xl shadow-sm p-5 flex items-center justify-between">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-widest text-cream-50/50">
@@ -340,7 +348,6 @@ export default function Page() {
         <span className="font-mono text-xl font-bold text-gold-400">{CLAIM_DATE}</span>
       </div>
 
-      {/* Tokenomics */}
       <div className="w-full max-w-md mt-6 bg-cream-50 border border-ink/10 rounded-2xl shadow-sm p-6">
         <div className="flex items-center justify-between mb-1">
           <h2 className="font-display italic text-xl text-ink">Tokenomics</h2>
@@ -375,7 +382,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Listing Update */}
       <div className="w-full max-w-md mt-6 bg-cream-50 border border-gold-400/40 rounded-2xl shadow-sm p-6">
         <div className="flex items-center justify-between mb-3">
           <h2 className="font-display italic text-xl text-ink">Listing Update</h2>
