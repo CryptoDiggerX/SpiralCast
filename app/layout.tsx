@@ -35,7 +35,8 @@ const frameEmbed = {
 
 export const metadata: Metadata = {
   title: "Spiral Cast | $SCT Airdrop Registration",
-  description: "Register your wallet for the $SCT airdrop. Allocation is scored by your Neynar Score. Direct claim, no vesting.",
+  description:
+    "Register your wallet for the $SCT airdrop. Allocation is scored by your Neynar Score. Direct claim, no vesting.",
   openGraph: {
     title: "Spiral Cast | $SCT Airdrop Registration",
     description: "No vesting, direct claim. Allocation scored by Neynar Score.",
